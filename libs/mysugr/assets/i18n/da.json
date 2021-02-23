@@ -1,0 +1,16 @@
+{
+  "app": {
+    "TITLE": "mySugr Tabel"
+  },
+  "DATE": "Dato",
+  "timeofday": {
+    "MORNING": "Morgen",
+    "NOON": "Middag",
+    "EVENING": "Aften",
+    "NIGHT": "Nat"
+  },
+  "action": {
+    "PRINT": "Print",
+    "CHOOSE_FILE": "Vælg fil"
+  }
+}

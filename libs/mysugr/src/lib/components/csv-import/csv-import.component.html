@@ -1,0 +1,8 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+
+  <button mat-button mat-raised-button color="primary"
+          ngxFilePicker [readMode]="readMode" accept="text/csv" (filePick)="onFilePicked($event)">
+    <span translate>action.CHOOSE_FILE</span>
+  </button>
+
+</div>
