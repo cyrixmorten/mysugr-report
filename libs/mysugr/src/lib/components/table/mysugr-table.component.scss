@@ -1,1 +1,41 @@
-[hidden] { display: none !important;}
+[hidden] {
+  display: none !important;
+}
+
+#mysugr-table {
+
+  .cell {
+    padding: 0.2em;
+
+    &.left {
+      border-bottom: thin solid grey;
+      border-right: thin solid grey;
+    }
+
+    &.top {
+      border-bottom: thin solid grey;
+      border-right: thin solid grey;
+    }
+
+    &.center {
+      border-bottom: thin solid grey;
+      border-right: thin solid grey;
+    }
+
+    &.right {
+      border-bottom: thin solid grey;
+    }
+  }
+
+  .grey {
+    background-color: lightgrey;
+  }
+
+  .light-text {
+    color: grey;
+  }
+
+  .spacer {
+    color: white;
+  }
+}

@@ -2,15 +2,23 @@
   "app": {
     "TITLE": "mySugr Tabel"
   },
-  "DATE": "Dato",
-  "timeofday": {
-    "MORNING": "Morgen",
-    "NOON": "Middag",
-    "EVENING": "Aften",
-    "NIGHT": "Nat"
-  },
-  "action": {
+  "mysugr-table": {
     "PRINT": "Print",
+    "header": {
+      "DATE": "Dato",
+      "BREAKFAST": "Morgenmad",
+      "LUNCH": "Middagsmad",
+      "DINNER": "Aftensmad",
+      "BEDTIME": "Sengetid",
+      "REMARKS_EXTRA_MEASUREMENTS": "Bemærkninger, ekstra måling"
+    },
+    "subheader": {
+      "BLOOD_GLUCOSE_ABBR": "BG",
+      "PLUS_INSULIN": "+ins"
+    },
+    "NO_REMARKS": "Ingen bemærkninger"
+  },
+  "csv-import": {
     "CHOOSE_FILE": "Vælg fil"
   }
 }
