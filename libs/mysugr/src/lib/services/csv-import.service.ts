@@ -2,34 +2,50 @@ import {Injectable} from '@angular/core';
 import {Papa, ParseResult} from 'ngx-papaparse';
 import {BehaviorSubject, Observable} from "rxjs";
 
+export interface ICsvResult extends ParseResult {
+  loading: boolean;
+}
+
+const emptyResult = {
+  loading: false,
+  data: [],
+  errors: [],
+  meta: {} as any
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CsvImportService {
 
-  private subject = new BehaviorSubject<ParseResult>({
-    data: [],
-    errors: [],
-    meta: {} as any
-  });
+  private subject = new BehaviorSubject<ICsvResult>(emptyResult);
 
   constructor(private papa: Papa) {}
 
   load(csv: string): void {
 
-    this.papa.parse(csv, {
-      complete: (results, parsedFile) => {
-        console.log('Parsed: ', results, parsedFile);
-        this.subject.next(results);
-      },
-      header: true,
-      // Add your options here
+    this.subject.next({
+      ...emptyResult,
+      loading: true
     });
+
+    setTimeout(() => {
+      this.papa.parse(csv, {
+        complete: (results, parsedFile) => {
+          this.subject.next({
+            ...results,
+            loading: false
+          });
+        },
+        header: true,
+        // Add your options here
+      });
+    }, 1000);
 
   }
 
 
-  getResult(): Observable<ParseResult> {
+  getResult(): Observable<ICsvResult> {
     return this.subject.asObservable();
   }
 }

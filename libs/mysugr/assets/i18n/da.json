@@ -3,6 +3,7 @@
     "TITLE": "mySugr Tabel"
   },
   "mysugr-table": {
+    "PROCESSING_DATA": "Indlæser data...",
     "PRINT": "Print",
     "header": {
       "DATE": "Dato",

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
+import defaultLanguage from '../../../../assets/i18n/da.json';
 
 @Component({
   selector: 'diabetes-tools-main',
@@ -9,11 +10,9 @@ import {TranslateService} from "@ngx-translate/core";
 export class MainComponent {
 
   constructor(translate: TranslateService) {
-    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setTranslation('da', defaultLanguage);
     translate.setDefaultLang('da');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('da');
   }
+
 
 }

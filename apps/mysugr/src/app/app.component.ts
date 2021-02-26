@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'diabetes-tools-root',
   templateUrl: './app.component.html',

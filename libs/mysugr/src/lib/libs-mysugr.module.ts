@@ -17,6 +17,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxFileHelpersModule} from "ngx-file-helpers";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,7 +31,7 @@ const routes: Route[] = [
 const angularModules = [
   CommonModule, HttpClientModule, FlexLayoutModule,
   MatDividerModule, MatTableModule, MatButtonModule,
-  MatIconModule, MatSnackBarModule
+  MatIconModule, MatSnackBarModule, MatProgressBarModule
 ]
 const translationModules = [
   TranslateModule.forRoot({

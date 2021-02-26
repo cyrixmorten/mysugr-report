@@ -29,6 +29,8 @@ export interface ITimeOfDayGroups {
   evening: ITimeOfDayData;
   // 21:00-00:00
   night: ITimeOfDayData;
+  // all notes for the day
+  notes: string[];
 }
 
 interface FilterByTimeParams {
@@ -70,8 +72,11 @@ export class TimeOfDayTransformation implements ITransformation<IMysgrData, ITim
     return groupedByDate.map((grouped) => {
       const {date, dayData} = grouped;
 
+      const dayNotes = dayData.map((entry) => entry.note).filter(note => !!note);
+
       return {
         date: date.toJSDate(),
+        notes: dayNotes,
         morning: this.getTimeOfDayData({data: dayData, hourStart: 6, hourEnd: 12}),
         noon: this.getTimeOfDayData({data: dayData, hourStart: 12, hourEnd: 17}),
         evening: this.getTimeOfDayData({data: dayData, hourStart: 17, hourEnd: 21}),
@@ -92,7 +97,7 @@ export class TimeOfDayTransformation implements ITransformation<IMysgrData, ITim
       bolus: bolusEntry ? {
         entry: bolusEntry,
         bloodsugar: bolusEntry.bloodsugar,
-        insulin: bolusEntry.insulin.bolus
+        insulin: bolusEntry.insulin.bolus,
       }: undefined,
       basic: basicEntry ? {
         entry: basicEntry,

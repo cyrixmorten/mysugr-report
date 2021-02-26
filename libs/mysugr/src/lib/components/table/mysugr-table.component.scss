@@ -1,29 +1,23 @@
-[hidden] {
-  display: none !important;
-}
+:host {
 
-#mysugr-table {
+  [hidden] {
+    display: none !important;
+  }
+
+  .row {
+    border-top: thin solid grey;
+  }
+
+  .framed {
+    border-right: thin solid grey;
+    border-left: thin solid grey;
+  }
 
   .cell {
     padding: 0.2em;
 
-    &.left {
-      border-bottom: thin solid grey;
-      border-right: thin solid grey;
-    }
-
-    &.top {
-      border-bottom: thin solid grey;
-      border-right: thin solid grey;
-    }
-
     &.center {
-      border-bottom: thin solid grey;
-      border-right: thin solid grey;
-    }
-
-    &.right {
-      border-bottom: thin solid grey;
+      text-align: center;
     }
   }
 
@@ -32,10 +26,7 @@
   }
 
   .light-text {
-    color: grey;
+    color: lightgrey;
   }
 
-  .spacer {
-    color: white;
-  }
 }

@@ -14,6 +14,7 @@ export interface IMysgrData {
   date: DateTime;
   bloodsugar: number;
   insulin: IInsulinTaken;
+  note: string;
   tags: TAG[];
 }
 
@@ -64,7 +65,8 @@ export class DataHolderService implements IDataHolder {
         basic: this.getNumber(entry, DATA_KEY.INSULIN_BASIC),
         correction: this.getNumber(entry, DATA_KEY.INUSULIN_CORRECTION),
       },
-      tags: this.getTags(entry)
+      tags: this.getTags(entry),
+      note: this.getString(entry, DATA_KEY.NOTE)
     }
   }
 

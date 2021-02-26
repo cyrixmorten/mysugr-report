@@ -1,90 +1,106 @@
-<div fxLayout="row" fxLayoutAlign="end center" style="padding-bottom: 10px">
+<div *ngIf="working">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <span translate>mysugr-table.PROCESSING_DATA</span>
+  </div>
+</div>
+
+<div [hidden]="data.length == 0 || working">
+  <div fxLayout="row" fxLayoutAlign="end center" style="padding-bottom: 10px">
     <button mat-button mat-raised-button color="primary"
-            ngxPrint printSectionId="mysugr-table" [useExistingCss]="true">
-        <span translate>mysugr-table.PRINT</span>
-        &nbsp;
-        <mat-icon>print</mat-icon>
+            ngxPrint printSectionId="mysugr-table" useExistingCss="true">
+      <span translate>mysugr-table.PRINT</span>
+      &nbsp;
+      <mat-icon>print</mat-icon>
     </button>
-</div>
-<div id="mysugr-table" fxLayout="column" class="mat-elevation-z8">
+  </div>
+  <div id="mysugr-table" fxLayout="column" class="mat-elevation-z8">
 
-    <div *ngFor="let entry of data; let first = first;" fxLayout="row">
-        <div fxLayout="column">
-            <div class="cell left" fxFlex="grow" fxLayout="row" *ngIf="first">
-                <div fxFlex="1 1 calc(5em + 10px)" fxLayoutAlign="center center" translate>
-                    mysugr-table.header.DATE
-                </div>
-            </div>
-            <div class="cell left" fxLayout="row">
-                <div fxFlex="1 1 calc(5em + 10px)">
-                    {{entry.date | date: 'dd/MM/yy'}}
-                </div>
-            </div>
+    <div fxLayout="row">
+      <div fxLayout="column">
+        <div class="cell center" fxFlex="grow" fxLayout="row">
+          <div fxFlex="1 1 calc(5em + 10px)" fxLayoutAlign="center center" translate>
+            mysugr-table.header.DATE
+          </div>
         </div>
-        <div fxLayout="column">
-            <div fxLayout="row" *ngIf="first">
-                <div class="cell top" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
-                    mysugr-table.header.BREAKFAST
-                </div>
-                <div class="cell top" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
-                    mysugr-table.header.LUNCH
-                </div>
-                <div class="cell top" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
-                    mysugr-table.header.DINNER
-                </div>
-                <div class="cell top" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
-                    mysugr-table.header.BEDTIME
-                </div>
-            </div>
-            <div fxLayout="row" *ngIf="first">
-                <div *ngFor="let number of [1,2,3,4]">
-                    <div class="cell center" fxFlex="1 1 calc(5em + 10px)" fxLayoutAlign="center center" translate>
-                        mysugr-table.subheader.BLOOD_GLUCOSE_ABBR
-                    </div>
-                    <div class="cell grey center" fxFlex="1 1 calc(5em + 10px)" fxLayoutAlign="center center" translate>
-                        mysugr-table.subheader.PLUS_INSULIN
-                    </div>
-                </div>
-            </div>
-            <div fxLayout="row" fxFlexFill>
-                <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.morning.bolus?.bloodsugar }}
-                </div>
-                <div class="cell grey center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.morning.bolus?.insulin }}
-                </div>
-                <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.noon.bolus?.bloodsugar }}
-                </div>
-                <div class="cell grey center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.noon.bolus?.insulin }}
-                </div>
-                <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.evening.bolus?.bloodsugar }}
-                </div>
-                <div class="cell grey center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.evening.bolus?.insulin }}
-                </div>
-                <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.night.basic?.bloodsugar }}
-                </div>
-                <div class="cell grey center" fxFlex="1 1 calc(5em + 10px)">
-                    {{ entry.night.basic?.insulin }}
-                </div>
-            </div>
+      </div>
+      <div class="framed" fxLayout="column">
+        <div fxLayout="row">
+          <div class="cell center" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
+            mysugr-table.header.BREAKFAST
+          </div>
+          <div class="cell center" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
+            mysugr-table.header.LUNCH
+          </div>
+          <div class="cell center" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
+            mysugr-table.header.DINNER
+          </div>
+          <div class="cell center" fxFlex="2 2 calc(10em + 10px)" fxLayoutAlign="center center" translate>
+            mysugr-table.header.BEDTIME
+          </div>
         </div>
-        <div fxLayout="column">
-            <div class="cell right" fxFlex="grow" fxLayout="row" *ngIf="first">
-                <div fxFlex="3 3 calc(15em + 10px)" fxLayoutAlign="center center" translate>
-                    mysugr-table.header.REMARKS_EXTRA_MEASUREMENTS
-                </div>
+        <div class="row" fxLayout="row">
+          <div *ngFor="let number of [1,2,3,4]">
+            <div class="cell center" fxFlex="1 1 calc(5em + 10px)" fxLayoutAlign="center center" translate>
+              mysugr-table.subheader.BLOOD_GLUCOSE_ABBR
             </div>
-            <div class="cell right light-text" fxLayout="row">
-                <div fxFlex="3 3 calc(15em + 10px)" translate>
-                    mysugr-table.NO_REMARKS
-                </div>
+            <div class="cell center grey" fxFlex="1 1 calc(5em + 10px)" fxLayoutAlign="center center" translate>
+              mysugr-table.subheader.PLUS_INSULIN
             </div>
+          </div>
         </div>
+      </div>
+      <div class="cell center" fxLayout="column" fxFlex="3 3 calc(15em + 10px)">
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlex="grow">
+          <span translate>mysugr-table.header.REMARKS_EXTRA_MEASUREMENTS</span>
+        </div>
+      </div>
     </div>
-</div>
 
+    <div class="row" *ngFor="let entry of data;" fxLayout="row">
+      <div fxLayout="column">
+        <div class="cell center" fxLayout="row">
+          <div fxFlex="1 1 calc(5em + 10px)">
+            {{entry.date | date: 'dd/MM/yy'}}
+          </div>
+        </div>
+      </div>
+      <div class="framed" fxLayout="column">
+        <div fxLayout="row" fxFlexFill>
+          <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.morning.bolus?.bloodsugar }}
+          </div>
+          <div class="cell center grey" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.morning.bolus?.insulin }}
+          </div>
+          <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.noon.bolus?.bloodsugar }}
+          </div>
+          <div class="cell center grey" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.noon.bolus?.insulin }}
+          </div>
+          <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.evening.bolus?.bloodsugar }}
+          </div>
+          <div class="cell center grey" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.evening.bolus?.insulin }}
+          </div>
+          <div class="cell center" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.night.basic?.bloodsugar }}
+          </div>
+          <div class="cell center grey" fxFlex="1 1 calc(5em + 10px)">
+            {{ entry.night.basic?.insulin }}
+          </div>
+        </div>
+      </div>
+      <div class="cell" fxLayout="column" fxFlex="3 3 calc(15em + 10px)">
+        <div fxLayout="column" style="max-width: 250px">
+          <div *ngFor="let note of entry.notes; let firstNote = first;">
+            {{note}}
+          </div>
+          <!--<div class="light-text" *ngIf="!entry.notes.length" translate>mysugr-table.NO_REMARKS</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
