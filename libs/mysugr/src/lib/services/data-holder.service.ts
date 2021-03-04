@@ -34,9 +34,15 @@ export class DataHolderService implements IDataHolder {
   private originData: any;
   private convertedData: IMysgrData[];
 
-  constructor(@Inject(SELECTED_DATA_MAPPING) private dataMapping: IDataMapping) {}
+  constructor(@Inject(SELECTED_DATA_MAPPING) private dataMapping: IDataMapping) {
+    const data = localStorage.getItem('data');
+    if (data) {
+      this.setOriginData(JSON.parse(data));
+    }
+  }
 
   setOriginData(data: any) {
+    localStorage.setItem('data', JSON.stringify(data));
     this.originData = data;
     this.convertedData = this.convertData(data);
 

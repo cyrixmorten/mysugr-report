@@ -4,29 +4,29 @@
     display: none !important;
   }
 
-  .row {
-    border-top: thin solid grey;
-  }
+  #mysugr-table {
+    overflow-x: auto;
 
-  .framed {
-    border-right: thin solid grey;
-    border-left: thin solid grey;
-  }
 
-  .cell {
-    padding: 0.2em;
-
-    &.center {
-      text-align: center;
+    .top-border {
+      border-top: thin solid grey;
     }
-  }
 
-  .grey {
-    background-color: lightgrey;
-  }
+    .cell {
+      padding: 0.2em;
 
-  .light-text {
-    color: lightgrey;
+      &.center {
+        text-align: center;
+      }
+    }
+
+    .grey {
+      background-color: lightgrey;
+    }
+
+    .light-text {
+      color: lightgrey;
+    }
   }
 
 }
